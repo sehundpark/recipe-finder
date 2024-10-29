@@ -1,129 +1,82 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <FooterContainer>
-      <FooterContent>
-        <FooterSection>
-          <FooterTitle>Recipe App</FooterTitle>
-          <FooterText>
-            Discover and save your favorite recipes from around the world.
-          </FooterText>
-        </FooterSection>
-
-        <FooterSection>
-          <FooterTitle>Quick Links</FooterTitle>
-          <FooterLinks>
-            <FooterLink to="/">Home</FooterLink>
-            <FooterLink to="/recipes">Recipes</FooterLink>
-            <FooterLink to="/about">About</FooterLink>
-          </FooterLinks>
-        </FooterSection>
-
-        <FooterSection>
-          <FooterTitle>Connect</FooterTitle>
-          <FooterLinks>
-            <FooterExternalLink
-              href="https://github.com/sehundpark"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </FooterExternalLink>
-            <FooterExternalLink
-              href="https://www.linkedin.com/in/sehun-park-5b280b164/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </FooterExternalLink>
-          </FooterLinks>
-        </FooterSection>
-      </FooterContent>
-
-      <FooterBottom>
-        <Copyright>© {currentYear} Recipe App. All rights reserved.</Copyright>
-      </FooterBottom>
-    </FooterContainer>
+    <FooterSection>
+      <FooterContainer>
+        <SocialLinks>
+          <SocialLink
+            href="https://www.linkedin.com/in/sehun-park-5b280b164"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={24} />
+          </SocialLink>
+          <SocialLink
+            href="https://github.com/sehundpark"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <Github size={24} />
+          </SocialLink>
+          <SocialLink href="mailto:sehunpcodes@gmail.com" aria-label="Email">
+            <Mail size={24} />
+          </SocialLink>
+        </SocialLinks>
+        <Copyright>
+          © {new Date().getFullYear()} Sehun Park. All rights reserved.
+        </Copyright>
+      </FooterContainer>
+    </FooterSection>
   );
 };
 
-const FooterContainer = styled.footer`
+const FooterSection = styled.div`
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.navbar};
   color: ${({ theme }) => theme.colors.text};
-  padding: 2rem 0;
-  margin-top: auto;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 `;
 
-const FooterContent = styled.div`
+const FooterContainer = styled.footer`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-`;
-
-const FooterSection = styled.div`
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 `;
 
-const FooterTitle = styled.h3`
-  font-size: 1.2rem;
-  margin: 0;
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-const FooterText = styled.p`
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
-`;
-
-const FooterLinks = styled.div`
+const SocialLinks = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
 `;
 
-const FooterLink = styled(Link)`
+const SocialLink = styled.a`
   color: ${({ theme }) => theme.colors.text};
-  text-decoration: none;
-  font-size: 0.9rem;
   transition: color 0.3s ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
   }
-`;
 
-const FooterExternalLink = styled.a`
-  color: ${({ theme }) => theme.colors.text};
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+  svg {
+    vertical-align: middle;
   }
-`;
-
-const FooterBottom = styled.div`
-  max-width: 1200px;
-  margin: 2rem auto 0;
-  padding: 1rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
-  text-align: center;
 `;
 
 const Copyright = styled.p`
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.secondary};
 `;
