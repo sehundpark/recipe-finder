@@ -7,6 +7,7 @@ import { RecipeCard } from "../components/RecipeCard";
 import { RecipeSkeleton } from "../components/RecipeSkeleton";
 import { RecipeSort, SortOption } from "../components/RecipeSort";
 import { RecipePagination } from "../components/RecipePagination";
+import { ApiLimitNotice } from "../components/ApiLimitNotice";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -38,8 +39,14 @@ export const RecipesPage = () => {
       setRecipes(results);
       setTotalRecipes(results.length);
       setHasSearched(true);
-    } catch (err) {
-      setError("Failed to search recipes. Please try again.");
+    } catch (err: any) {
+      if (err.code === "RATE_LIMIT_EXCEEDED") {
+        setError(
+          "API rate limit reached (10 calls/minute). Please wait a minute before trying again."
+        );
+      } else {
+        setError("Failed to search recipes. Please try again.");
+      }
       console.error("Search error:", err);
     } finally {
       setLoading(false);
@@ -124,6 +131,7 @@ export const RecipesPage = () => {
     <PageContainer>
       <Header>
         <Title>Recipe Finder</Title>
+        <ApiLimitNotice />
       </Header>
 
       <RecipeSearch onSearch={handleSearch} loading={loading} error={error} />
