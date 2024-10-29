@@ -34,7 +34,7 @@ const themes = {
       text: "#ffffff",
       primary: "#0096ff",
       secondary: "#909090",
-      navbar: "#1a1a1a",
+      navbar: "#363636",
       border: "#2d2d2d",
     },
   },

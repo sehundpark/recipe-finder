@@ -2,3 +2,85 @@
 {"level":"info","message":"Server running on port 3001 in development mode","timestamp":"2024-10-29T06:06:07.287Z"}
 {"level":"info","message":"Server running on port 3001 in development mode","timestamp":"2024-10-29T06:06:57.434Z"}
 {"level":"info","message":"Server running on port 3001 in development mode","timestamp":"2024-10-29T06:07:52.718Z"}
+{"level":"info","message":"Server running on port 3001 in development mode","timestamp":"2024-10-29T06:59:50.322Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"curry","timestamp":"2024-10-29T06:59:57.681Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"afdsafdafg","timestamp":"2024-10-29T07:01:31.924Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"fdafdaffffffffffffffffffffffff","timestamp":"2024-10-29T07:01:36.544Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"curry","timestamp":"2024-10-29T07:01:46.061Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T07:01:46.068Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"kimchi","timestamp":"2024-10-29T07:12:50.015Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"kimchi","timestamp":"2024-10-29T07:15:22.299Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T07:15:22.307Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"steak","timestamp":"2024-10-29T07:29:51.241Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"dumplings","timestamp":"2024-10-29T07:32:36.884Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"dumpling","timestamp":"2024-10-29T07:33:32.849Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"dumpling","timestamp":"2024-10-29T07:37:11.972Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T07:37:11.979Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"kimchi","timestamp":"2024-10-29T07:43:37.000Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T07:43:37.006Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T07:49:46.222Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T07:49:46.693Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T07:49:46.694Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T07:57:53.227Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T07:57:53.227Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T07:57:53.229Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T07:57:53.230Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T07:58:38.562Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T07:59:23.744Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T07:59:23.745Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T07:59:23.746Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T07:59:23.746Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T07:59:28.024Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T07:59:28.031Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:00:22.231Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:00:22.232Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:00:22.236Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:00:22.237Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:00:30.517Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:00:30.518Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:00:30.520Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:00:30.520Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T08:00:34.487Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T08:00:34.494Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T08:01:00.426Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T08:01:00.437Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T08:01:02.077Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T08:01:02.083Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:01:44.177Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:01:44.178Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:01:44.181Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:01:44.181Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T08:01:48.211Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T08:01:48.218Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:12.021Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:12.021Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:12.024Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:12.024Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:19.691Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:19.692Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:19.695Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:19.696Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:32.087Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:32.087Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:32.091Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:32.091Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T08:02:35.639Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T08:02:35.646Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:46.516Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:46.517Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:02:46.519Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:02:46.519Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"pizza","timestamp":"2024-10-29T08:02:49.324Z"}
+{"level":"debug","message":"Returning cached search results","timestamp":"2024-10-29T08:02:49.331Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:03:13.524Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:03:13.524Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:03:13.526Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:03:13.526Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:03:18.396Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:03:18.396Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:03:18.399Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:03:18.399Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:03:23.157Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:03:23.158Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T08:03:23.160Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T08:03:23.160Z"}

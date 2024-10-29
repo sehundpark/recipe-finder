@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Clock, Users, Scale, ChefHat, Heart } from "lucide-react";
+import { Users, Scale, ChefHat } from "lucide-react";
 import { Recipe } from "../types/recipe";
 
 interface RecipeCardProps {
@@ -8,8 +8,9 @@ interface RecipeCardProps {
 }
 
 export const RecipeCard = ({ recipe }: RecipeCardProps) => {
-  const calories = Math.round(recipe.calories / recipe.yield);
-  const nutrients = recipe.totalNutrients;
+  const caloriesPerServing = recipe.calories
+    ? Math.round(recipe.calories / (recipe.yield || 1))
+    : null;
 
   return (
     <Card>
@@ -22,20 +23,26 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
         <Title>{recipe.label}</Title>
 
         <MetaInfo>
-          <MetaItem title="Servings">
-            <Users size={16} />
-            <span>Serves {recipe.yield}</span>
-          </MetaItem>
-          <MetaItem title="Calories per serving">
-            <ChefHat size={16} />
-            <span>{calories} cal</span>
-          </MetaItem>
-          {nutrients?.PROCNT && (
+          {recipe.yield && (
+            <MetaItem title="Servings">
+              <Users size={16} />
+              <span>Serves {recipe.yield}</span>
+            </MetaItem>
+          )}
+          {caloriesPerServing && (
+            <MetaItem title="Calories per serving">
+              <ChefHat size={16} />
+              <span>{caloriesPerServing} cal</span>
+            </MetaItem>
+          )}
+          {recipe.totalNutrients?.PROCNT && (
             <MetaItem title="Protein per serving">
               <Scale size={16} />
               <span>
-                {Math.round(nutrients.PROCNT.quantity / recipe.yield)}
-                {nutrients.PROCNT.unit}
+                {Math.round(
+                  recipe.totalNutrients.PROCNT.quantity / (recipe.yield || 1)
+                )}
+                {recipe.totalNutrients.PROCNT.unit}
               </span>
             </MetaItem>
           )}
@@ -59,20 +66,9 @@ export const RecipeCard = ({ recipe }: RecipeCardProps) => {
           ))}
         </Tags>
 
-        <IngredientCount>
-          <Heart size={16} />
-          {recipe.ingredientLines.length} ingredients
-        </IngredientCount>
-
-        <ActionButtons>
-          <ViewButton
-            href={recipe.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Recipe
-          </ViewButton>
-        </ActionButtons>
+        <ViewButton href={recipe.url} target="_blank" rel="noopener noreferrer">
+          View Recipe
+        </ViewButton>
       </CardContent>
     </Card>
   );
@@ -165,7 +161,7 @@ const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   min-height: 3.5rem;
 `;
 
@@ -199,34 +195,17 @@ const Tag = styled.span<{ $type: "diet" | "health" | "cuisine" }>`
   }};
 `;
 
-const IngredientCount = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-
-  svg {
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const ActionButtons = styled.div`
-  display: flex;
-  gap: 0.5rem;
-`;
-
 const ViewButton = styled.a`
-  flex: 1;
+  display: block;
+  width: 100%;
   padding: 0.75rem;
-  text-align: center;
   background: ${({ theme }) => theme.colors.primary};
   color: white;
   text-decoration: none;
   border-radius: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
+  text-align: center;
   transition: all 0.2s ease;
 
   &:hover {

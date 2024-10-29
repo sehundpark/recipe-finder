@@ -25,11 +25,8 @@ const LayoutContainer = styled.div`
 
 const MainContent = styled.main`
   flex: 1;
-  padding-top: 64px; // Height of the navbar
-  padding-bottom: 120px; // Height of the footer + extra space
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-top: 14px;
+  padding-bottom: 20px;
+  position: relative;
 `;
