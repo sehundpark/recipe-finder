@@ -4,7 +4,7 @@ import { Footer } from "./pages/Footer";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { RecipesPage } from "./pages/RecipesPage";
-import { ThemeProvider } from "./components/ThemeContext";
+import { ThemeProvider } from "./components/ThemeProvider";
 import { ScrollToTop } from "./components/ScollToTop";
 import "./App.css";
 
