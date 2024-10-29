@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "../components/ThemeProvider";
@@ -7,6 +7,7 @@ import { useTheme } from "../components/ThemeProvider";
 export const NavBar = () => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -19,17 +20,33 @@ export const NavBar = () => {
           <span></span>
         </MenuToggle>
         <NavLinks $isOpen={isMenuOpen}>
-          <NavbarList>
-            <Link to="/" onClick={toggleMenu}>
+          <NavItem>
+            <NavLink
+              to="/"
+              $isActive={location.pathname === "/"}
+              onClick={toggleMenu}
+            >
               Home
-            </Link>
-            <Link to="/recipes" onClick={toggleMenu}>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              to="/recipes"
+              $isActive={location.pathname === "/recipes"}
+              onClick={toggleMenu}
+            >
               Recipes
-            </Link>
-            <Link to="/about" onClick={toggleMenu}>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              to="/about"
+              $isActive={location.pathname === "/about"}
+              onClick={toggleMenu}
+            >
               About
-            </Link>
-          </NavbarList>
+            </NavLink>
+          </NavItem>
         </NavLinks>
         <ThemeToggle onClick={toggleTheme}>
           {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
@@ -95,18 +112,60 @@ const NavLinks = styled.ul<{ $isOpen: boolean }>`
     padding: 1rem;
     display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
   }
 `;
 
-const NavbarList = styled.li`
-  a {
-    color: ${({ theme }) => theme.colors.text};
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+const NavItem = styled.li`
+  position: relative;
+`;
 
-    &:hover {
-      color: ${({ theme }) => theme.colors.primary};
+const NavLink = styled(Link)<{ $isActive: boolean }>`
+  color: ${({ theme }) => theme.colors.text};
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background-color: ${({ theme }) => theme.colors.primary};
+    opacity: ${({ $isActive }) => ($isActive ? "1" : "0")};
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => `${theme.colors.primary}10`};
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  ${({ $isActive, theme }) =>
+    $isActive &&
+    `
+    color: ${theme.colors.primary};
+  `}
+
+  @media (max-width: 768px) {
+    display: block;
+    padding: 0.75rem 1rem;
+
+    &::after {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      height: auto;
     }
   }
 `;
@@ -120,8 +179,11 @@ const ThemeToggle = styled.button`
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.text};
+  border-radius: 6px;
+  transition: all 0.3s ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => `${theme.colors.primary}10`};
   }
 `;
