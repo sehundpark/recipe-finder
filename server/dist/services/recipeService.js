@@ -16,12 +16,19 @@ const getFilterOptions = async () => {
             logger_1.default.debug("Returning cached filter options");
             return cachedData;
         }
+        if (!(0, cacheService_1.canMakeApiCall)()) {
+            throw Object.assign(new Error("API rate limit reached"), {
+                status: 429,
+                code: "RATE_LIMIT_EXCEEDED",
+            });
+        }
         const params = new URLSearchParams({
             type: "public",
-            q: "chicken",
+            q: "chicken", // Using a common term to get diverse options
             app_id: config_1.appConfig.edamam.appId,
             app_key: config_1.appConfig.edamam.appKey,
         });
+        (0, cacheService_1.incrementApiCounter)();
         const response = await (0, node_fetch_1.default)(`${config_1.appConfig.edamam.baseUrl}?${params}`);
         if (!response.ok) {
             throw Object.assign(new Error("Failed to fetch filter options"), {
@@ -29,6 +36,7 @@ const getFilterOptions = async () => {
             });
         }
         const data = (await response.json());
+        // Process all unique values from the response
         const filterOptions = {
             healthLabels: [
                 ...new Set(data.hits.flatMap((hit) => hit.recipe.healthLabels)),
@@ -63,12 +71,25 @@ const searchRecipes = async (query, filters) => {
             logger_1.default.debug("Returning cached search results");
             return cachedData;
         }
+        // Check for similar cached results before making a new API call
+        const similarResults = (0, cacheService_1.getSimilarSearchResults)(query, filters);
+        if (similarResults) {
+            logger_1.default.debug("Returning similar cached results");
+            return similarResults;
+        }
+        if (!(0, cacheService_1.canMakeApiCall)()) {
+            throw Object.assign(new Error("API rate limit reached"), {
+                status: 429,
+                code: "RATE_LIMIT_EXCEEDED",
+            });
+        }
         const params = new URLSearchParams({
             type: "public",
             q: query,
             app_id: config_1.appConfig.edamam.appId,
             app_key: config_1.appConfig.edamam.appKey,
         });
+        // Add filters to params
         if (filters?.cuisineType)
             params.append("cuisineType", filters.cuisineType);
         if (filters?.mealType)
@@ -83,8 +104,10 @@ const searchRecipes = async (query, filters) => {
         if (filters?.excluded) {
             filters.excluded.forEach((excluded) => params.append("excluded", excluded));
         }
+        (0, cacheService_1.incrementApiCounter)();
         const response = await (0, node_fetch_1.default)(`${config_1.appConfig.edamam.baseUrl}?${params}`);
         if (!response.ok) {
+            (0, cacheService_1.setFailedSearchCache)(cacheKey);
             throw Object.assign(new Error("Failed to fetch recipes"), {
                 status: response.status,
             });

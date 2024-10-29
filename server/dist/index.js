@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
+const path_1 = __importDefault(require("path"));
 const config_1 = require("./config");
 const middleware_1 = require("./middleware");
 const recipes_1 = require("./routes/recipes");
@@ -16,8 +17,16 @@ app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(middleware_1.rateLimiter);
-// Routes
+// API Routes
 app.use("/api/recipes", recipes_1.recipeRoutes);
+// Serve static files from the React app
+if (config_1.appConfig.env === "production") {
+    app.use(express_1.default.static(path_1.default.join(__dirname, "../../client/dist")));
+    // Handle React routing, return all requests to React app
+    app.get("*", (req, res) => {
+        res.sendFile(path_1.default.join(__dirname, "../../client/dist/index.html"));
+    });
+}
 // Error handling
 app.use(middleware_1.errorHandler);
 app.listen(config_1.appConfig.port, () => {
