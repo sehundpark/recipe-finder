@@ -6,6 +6,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { ScrollToTop } from "./components/ScollToTop";
 import { Layout } from "./components/Layout";
 import "./App.css";
+import React from "react";
 
 function App() {
   return (

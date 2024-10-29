@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "../components/ThemeProvider";
+import React from "react";
 
 export const NavBar = () => {
   const { theme, toggleTheme } = useTheme();

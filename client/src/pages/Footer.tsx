@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Mail, Github, Linkedin } from "lucide-react";
+import React from "react";
 
 export const Footer = () => {
   return (

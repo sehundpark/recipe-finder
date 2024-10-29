@@ -5,6 +5,7 @@ import {
   ReactNode,
   useContext,
 } from "react";
+import React from "react";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
 type ThemeMode = "light" | "dark";
