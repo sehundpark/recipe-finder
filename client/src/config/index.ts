@@ -4,7 +4,7 @@ const getApiBaseUrl = () => {
   }
   return import.meta.env.DEV
     ? "http://localhost:3001/api"
-    : "https://recipe-finder-fdsk.onrender.com/api";
+    : "https://recipe-finder-9ale.onrender.com";
 };
 
 export const config = {
