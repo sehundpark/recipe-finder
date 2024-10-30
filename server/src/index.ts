@@ -9,20 +9,41 @@ import logger from "./utils/logger";
 
 const app = express();
 
-// Middleware
+// CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://sehunrecipefinder.netlify.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+);
+
+// Security middleware
 app.use(helmet());
-app.use(cors());
 app.use(express.json());
 app.use(rateLimiter);
 
 // API Routes
 app.use("/api/recipes", recipeRoutes);
 
-// Serve static files from the React app
+// Static files in production
 if (appConfig.env === "production") {
   app.use(express.static(path.join(__dirname, "../../client/dist")));
 
-  // Handle React routing, return all requests to React app
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
   });
@@ -31,13 +52,26 @@ if (appConfig.env === "production") {
 // Error handling
 app.use(errorHandler);
 
-app.listen(appConfig.port, () => {
-  logger.info(
-    `Server running on port ${appConfig.port} in ${appConfig.env} mode`
-  );
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  logger.info(`Server running on port ${PORT} in ${appConfig.env} mode`);
 });
 
+// Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {
   logger.error("Unhandled Rejection:", err);
-  process.exit(1);
+  // Don't exit in development
+  if (appConfig.env === "production") {
+    process.exit(1);
+  }
+});
+
+// Handle uncaught exceptions
+process.on("uncaughtException", (err) => {
+  logger.error("Uncaught Exception:", err);
+  // Don't exit in development
+  if (appConfig.env === "production") {
+    process.exit(1);
+  }
 });
