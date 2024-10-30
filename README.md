@@ -2,6 +2,8 @@
 
 A full-stack TypeScript application demonstrating modern web development practices through a recipe discovery platform, implementing React with custom hooks and context for state management, styled-components for dynamic theming, and responsive design patterns on the frontend. The backend architecture utilizes Node.js with Express, featuring RESTful API integration with request caching and rate limiting, custom middleware for API optimization, and type-safe development practices across the entire application stack.
 
+![recipefinder](https://github.com/user-attachments/assets/a32d1348-fb85-4830-96d7-d021925113a7)
+
 ## 🌐 Live Demo
 
 Check out the live demo of the project: [Recipe Finder](https://sehunrecipefinder.netlify.app/recipes)
