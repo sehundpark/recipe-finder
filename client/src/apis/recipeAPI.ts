@@ -3,12 +3,37 @@ import { config } from "../config";
 
 const API_BASE_URL = config.apiBaseUrl;
 
+const fetchWithRetry = async (
+  url: string,
+  options: RequestInit = {},
+  retries = 3
+) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          "Content-Type": "application/json",
+          ...options.headers,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return response;
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      // Wait 1 second before retrying
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  }
+};
+
 export const getFilterOptions = async (): Promise<FilterOptions> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/recipes/filters`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetchWithRetry(`${API_BASE_URL}/recipes/filters`);
     return await response.json();
   } catch (error) {
     console.error("Error fetching filter options:", error);
@@ -32,10 +57,9 @@ export const searchRecipes = async (
       });
     }
 
-    const response = await fetch(`${API_BASE_URL}/recipes/search?${params}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetchWithRetry(
+      `${API_BASE_URL}/recipes/search?${params}`
+    );
     return await response.json();
   } catch (error) {
     console.error("Error searching recipes:", error);
