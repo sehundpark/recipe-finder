@@ -306,3 +306,8 @@
 {"level":"debug","message":"Fetching filter options","timestamp":"2024-10-29T22:22:26.057Z"}
 {"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-29T22:22:26.057Z"}
 {"level":"info","message":"Server running on port 3001 in development mode","timestamp":"2024-10-29T23:09:11.032Z"}
+{"level":"info","message":"Server running on port 3001 in development mode","timestamp":"2024-10-30T00:46:20.169Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-30T00:46:40.147Z"}
+{"level":"debug","message":"Fetching filter options","timestamp":"2024-10-30T00:46:40.708Z"}
+{"level":"debug","message":"Returning cached filter options","timestamp":"2024-10-30T00:46:40.709Z"}
+{"filters":{},"level":"debug","message":"Searching recipes","query":"kimchi","timestamp":"2024-10-30T00:47:44.225Z"}

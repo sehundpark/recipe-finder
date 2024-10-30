@@ -8,6 +8,7 @@ import { RecipeSkeleton } from "../components/RecipeSkeleton";
 import { RecipeSort } from "../components/RecipeSort";
 import { RecipePagination } from "../components/RecipePagination";
 import { ApiLimitNotice } from "../components/ApiLimitNotice";
+import { RenderNotice } from "../components/RenderNotice";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -126,6 +127,7 @@ export const RecipesPage = () => {
         </Header>
 
         <ApiLimitNotice />
+        <RenderNotice />
 
         <SearchSection>
           <RecipeSearch
